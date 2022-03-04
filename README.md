@@ -54,6 +54,7 @@ midtop, midleft, midbottom, midright
 center, centerx, centery
 size, , width, height, w, h
 **************************************************
+```
 
 ## Rect클래스의 주요 메서드
 ```
@@ -66,3 +67,51 @@ union(Rect)  =  자신의 인수의 Rect를 포함하는 최소 Rect를 반환
 contains(Rect)  =  인수의 Rect를 포함하는지 아닌지 여부를 반환
 collidepoint(x, y)  =  (x,y)라는점이 자신에게 포함되는지 아닌지 여부를 반환
 colliderect(Rect) Rect와 자신에게 겹침이 있는지 없는지(충돌)를 반환
+```
+
+## 직사각형
+```
+화면에 그리려면 draw클래스의 메서드를 사용한다. 직사각형을 그리는 메서드 rect의 정의는 다음과 같다. 직사각형을 나타내는 Rect, 직사각형을 그리는 rect, 헷갈리기 쉽기 때문에 주의
+
+rect(Surface, color, Rect, width=0) -> Rect
+Surface: 그리는 대상이 되는 화면(Surface객체)
+color:색
+Rect: 직사각형의 위치와 크기
+width: 선 폭(생략할 때는 빈틈없이 칠한다.)
+```
+```PYTHON
+import sys
+import pygame
+from pygame.locals import QUIT, Rect
+
+pygame.init()
+SURFACE = pygame.display.set_mode((400, 300))
+FPSCLOCK = pygame.time.Clock()
+
+def main():
+    while True:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+
+        SURFACE.fill((255, 255, 255))
+
+        pygame.draw.rect(SURFACE, (255, 0, 0), (10, 20, 100, 50))
+
+        pygame.draw.rect(SURFACE, (255, 0, 0), (150, 10, 100, 30), 3)
+
+        pygame.draw.rect(SURFACE, (0, 255, 0), ((100, 80), (80, 50)))
+
+        rect0 = Rect(200, 60, 140, 80)
+        pygame.draw.rect(SURFACE, (0, 0, 255), rect0)
+
+        rect1 = Rect((30, 160), (100, 50))
+        pygame.draw.rect(SURFACE, (255, 255, 0), rect1)
+
+        pygame.display.update()
+        FPSCLOCK.tick(3)
+
+if __name__ == '__main__':
+    main()
+```
