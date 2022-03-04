@@ -54,3 +54,15 @@ midtop, midleft, midbottom, midright
 center, centerx, centery
 size, , width, height, w, h
 **************************************************
+
+## Rect클래스의 주요 메서드
+```
+copy()  =  Rect 객체를 복제한다.
+move(x, y)  =  (x, y) 이동한 Rect를 반환한다. 자신은 이동X
+move_ip(x, y)  =  자신(Rect)을 (x, y)  이동
+inflate(x, y)  =  현재값에서 (x, y)만큼 크기를 변경한 Rect를 반환.
+inflate_ip(x, y)  =  자신의 사이즈를 (x, y)만큼 변경
+union(Rect)  =  자신의 인수의 Rect를 포함하는 최소 Rect를 반환
+contains(Rect)  =  인수의 Rect를 포함하는지 아닌지 여부를 반환
+collidepoint(x, y)  =  (x,y)라는점이 자신에게 포함되는지 아닌지 여부를 반환
+colliderect(Rect) Rect와 자신에게 겹침이 있는지 없는지(충돌)를 반환
